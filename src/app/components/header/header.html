@@ -1,0 +1,46 @@
+<header class="header" (keydown.escape)="fecharMenu()">
+  <div class="container header__inner">
+    <a
+      href="#sobre"
+      class="header__brand"
+      aria-label="Currículo digital — início"
+      (click)="fecharMenu()"
+      ><span aria-hidden="true">&lt;/&gt;</span> currículo<span
+        class="header__dot"
+        aria-hidden="true"
+        >.</span
+      ></a
+    >
+    <div class="header__controls">
+      <button
+        class="header__theme"
+        type="button"
+        (click)="toggleTheme()"
+        [attr.aria-label]="dark() ? 'Ativar tema claro' : 'Ativar tema escuro'"
+        [attr.aria-pressed]="dark()"
+      >
+        <span aria-hidden="true">{{ dark() ? '☀' : '☾' }}</span></button
+      ><button
+        class="header__menu"
+        type="button"
+        [attr.aria-expanded]="menuAberto()"
+        aria-controls="main-nav"
+        (click)="toggleMenu()"
+      >
+        {{ menuAberto() ? 'Fechar' : 'Menu' }}
+      </button>
+    </div>
+    <nav
+      id="main-nav"
+      class="header__nav"
+      [class.header__nav--open]="menuAberto()"
+      aria-label="Navegação principal"
+    >
+      <a href="#sobre" (click)="fecharMenu()">Sobre</a
+      ><a href="#habilidades" (click)="fecharMenu()">Habilidades</a
+      ><a href="#trajetoria" (click)="fecharMenu()">Trajetória</a
+      ><a href="#projetos" (click)="fecharMenu()">Projetos</a
+      ><a href="#contato" (click)="fecharMenu()">Contato <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>

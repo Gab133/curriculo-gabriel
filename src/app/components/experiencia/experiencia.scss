@@ -1,0 +1,76 @@
+@use '../../../styles/mixins' as *;
+:host {
+  display: block;
+}
+.experience__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+.experience__item {
+  display: grid;
+  gap: 0.8rem;
+  position: relative;
+  padding-left: 1.3rem;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    inset: 0.5rem auto -1.5rem 0.25rem;
+    background: var(--border);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    height: 9px;
+    width: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  &:last-child::before {
+    bottom: 0;
+  }
+  @include tablet {
+    grid-template-columns: 210px minmax(0, 1fr);
+    padding-left: 1.8rem;
+  }
+}
+.experience__period {
+  padding-top: 0.25rem;
+  p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+}
+.experience__card {
+  @include panel;
+  padding: 1.5rem;
+  position: relative;
+  h3 {
+    font-size: 1.2rem;
+    padding-right: 2rem;
+    overflow-wrap: anywhere;
+  }
+}
+.experience__number {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  color: var(--muted);
+  font: 0.7rem var(--font-mono);
+}
+.experience__organization {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-top: 0.6rem;
+}
+.experience__description {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}

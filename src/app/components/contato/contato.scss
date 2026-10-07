@@ -1,0 +1,91 @@
+@use '../../../styles/mixins' as *;
+:host {
+  display: block;
+}
+.contact {
+  @include panel;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  gap: 2rem;
+  @include tablet {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+}
+.contact__intro h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  letter-spacing: -0.04em;
+  margin-top: 1rem;
+  span {
+    color: var(--accent);
+  }
+}
+.contact__intro > p:last-child {
+  color: var(--muted);
+  margin-top: 1rem;
+}
+.contact__email {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 0.8rem;
+  justify-content: center;
+}
+.contact__address {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  font-weight: 600;
+}
+a.contact__address:hover {
+  text-decoration: underline;
+}
+.contact__feedback {
+  min-height: 2.8em;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.contact__links {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.8rem;
+  @include desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  > a,
+  > div {
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+  a {
+    transition: transform var(--transition-fast);
+    &:hover {
+      transform: translateY(-2px);
+      color: var(--accent);
+    }
+    > span:last-child {
+      margin-left: auto;
+    }
+  }
+}
+.contact__icon {
+  border: 1px solid var(--border);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font: 0.85rem var(--font-mono);
+  flex-shrink: 0;
+}
+.contact__pending {
+  color: var(--muted);
+  p {
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+}

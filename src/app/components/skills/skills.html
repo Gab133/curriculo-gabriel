@@ -1,0 +1,84 @@
+<section id="habilidades" aria-labelledby="skills-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">01 / repertório</p>
+      <h2 id="skills-title">Habilidades em foco.</h2>
+    </div>
+    <p>Explore por categoria.<br />Cada habilidade tem seu espaço.</p>
+  </div>
+  <div class="skills__tools">
+    <div class="skills__filters" role="group" aria-label="Filtrar habilidades por categoria">
+      @for (cat of categorias(); track cat) {
+        <button
+          type="button"
+          (click)="setFiltro(cat)"
+          [class.skills__filter--active]="filtroAtivo() === cat"
+          [attr.aria-pressed]="filtroAtivo() === cat"
+        >
+          {{ cat === 'Backend' ? 'Backend / Programação' : cat }}
+        </button>
+      }
+    </div>
+    <label class="skills__search"
+      ><span class="sr-only">Buscar habilidade</span><span aria-hidden="true">⌕</span
+      ><input
+        type="search"
+        placeholder="Buscar habilidade"
+        [value]="busca()"
+        (input)="setBusca($event)"
+    /></label>
+  </div>
+  <p class="skills__count" aria-live="polite" aria-atomic="true">
+    {{ skillsFiltradas().length }} habilidades · {{ filtroAtivo() }}
+  </p>
+  <div class="skills__grid">
+    @for (skill of skillsFiltradas(); track skill.id) {
+      <article class="skills__card">
+        <div class="skills__meta">
+          <span class="badge">{{ skill.categoria }}</span
+          ><span class="skills__symbol" aria-hidden="true">{{
+            skill.categoria === 'Frontend'
+              ? '&lt;/&gt;'
+              : skill.categoria === 'Backend'
+                ? '{ }'
+                : skill.categoria === 'Ferramentas'
+                  ? '⌘'
+                  : '↗'
+          }}</span>
+        </div>
+        <h3>{{ skill.nome }}</h3>
+        <p>{{ skill.descricao }}</p>
+        @if (skill.nivel !== null) {
+          <div class="skills__level">
+            <span>Autoavaliação</span><span>{{ nivel(skill) }}%</span>
+          </div>
+          <div
+            class="skills__bar"
+            role="progressbar"
+            [attr.aria-label]="'Autoavaliação em ' + skill.nome"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [attr.aria-valuenow]="nivel(skill)"
+          >
+            <div [style.width.%]="nivel(skill)"></div>
+          </div>
+        } @else {
+          <p class="skills__pending">
+            {{ skill.nivelTexto ? 'Autoavaliação: ' + skill.nivelTexto : 'Nível a definir' }}
+          </p>
+        }
+      </article>
+    } @empty {
+      <div class="skills__empty">
+        <h3>Nenhuma habilidade encontrada.</h3>
+        <p>Tente outra palavra ou categoria.</p>
+        <button class="button" type="button" (click)="limpar()">Limpar filtros</button>
+      </div>
+    }
+  </div>
+  @if (emPersonalizacao()) {
+    <p class="placeholder-note skills__note">
+      Conteúdo provisório. As habilidades e níveis serão preenchidos com dados reais.
+    </p>
+  }
+</section>

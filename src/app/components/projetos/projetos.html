@@ -1,0 +1,38 @@
+<section id="projetos" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">03 / projetos</p>
+      <h2 id="projects-title">Da ideia à prática.</h2>
+    </div>
+    <p>Um espaço para soluções,<br />aprendizados e código.</p>
+  </div>
+  <div class="projects__grid">
+    @for (projeto of projetos; track projeto.id) {
+      <article class="projects__card">
+        <div class="projects__cover" aria-hidden="true">
+          <span>0{{ $index + 1 }}</span>
+          <div>&lt; ideia /&gt;<br /><b>→ solução</b></div>
+          <span>↗</span>
+        </div>
+        <div class="projects__body">
+          <p class="eyebrow">Projeto em desenvolvimento</p>
+          <h3>{{ projeto.nome }}</h3>
+          <p>{{ projeto.descricao }}</p>
+          <p class="projects__stack">{{ projeto.tecnologias }}</p>
+          @if (externalUrl(projeto.url); as url) {
+            <a
+              class="button"
+              [href]="url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="'Ver ' + projeto.nome + ' (abre em nova aba)'"
+              >Ver projeto <span aria-hidden="true">↗</span></a
+            >
+          } @else {
+            <p class="placeholder-note">Link ainda não disponibilizado.</p>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

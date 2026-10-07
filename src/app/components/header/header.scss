@@ -1,0 +1,93 @@
+@use '../../../styles/mixins' as *;
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 80px;
+  gap: 1rem;
+}
+.header__brand {
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  > span:first-child {
+    font: 1.1rem var(--font-mono);
+    color: var(--accent);
+  }
+}
+.header__dot {
+  color: var(--accent);
+  margin-left: -0.5rem;
+}
+.header__controls {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  @include tablet {
+    order: 3;
+    margin-left: 0;
+  }
+}
+.header__theme,
+.header__menu {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-full);
+  padding-inline: 1rem;
+  &:hover {
+    background: var(--surface-alt);
+  }
+}
+.header__theme {
+  width: 44px;
+  padding: 0;
+  font-size: 1.4rem;
+}
+.header__menu {
+  font-size: 0.8rem;
+  @include tablet {
+    display: none;
+  }
+}
+.header__nav {
+  display: none;
+  width: 100%;
+  padding-bottom: 1rem;
+  &--open {
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+    &:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+  @include tablet {
+    display: flex;
+    width: auto;
+    margin-left: auto;
+    gap: 1.3rem;
+    padding: 0;
+    flex-direction: row;
+  }
+}

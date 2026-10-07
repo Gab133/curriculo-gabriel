@@ -1,13 +1,42 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>CurriculoGabriel</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Currículo Digital — GABRIEL BRAGA | IA, Cibersegurança e Desenvolvimento de Jogos</title>
+    <base href="/" />
+    <meta
+      name="description"
+      content="Conheça a trajetória, habilidades e projetos de GABRIEL BRAGA. Estudante de Análise e Desenvolvimento de Sistemas na UniAteneu, em Fortaleza, Ceará."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f4ee" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Currículo Digital — GABRIEL BRAGA | IA, Cibersegurança e Desenvolvimento de Jogos"
+    />
+    <meta
+      property="og:description"
+      content="Conheça a trajetória, habilidades e projetos de GABRIEL BRAGA. Estudante de Análise e Desenvolvimento de Sistemas na UniAteneu, em Fortaleza, Ceará."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script>
+      // Aplica o tema antes da pintura, sem piscar e sem depender do armazenamento.
+      try {
+        const stored = localStorage.getItem('curriculo-theme');
+        const dark =
+          stored === 'dark' ||
+          (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#111914' : '#f3f4ee';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+  </head>
+  <body>
+    <app-root></app-root
+    ><noscript>Ative o JavaScript para visualizar o currículo interativo.</noscript>
+  </body>
 </html>

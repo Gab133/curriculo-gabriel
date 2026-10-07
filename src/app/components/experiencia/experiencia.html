@@ -1,0 +1,25 @@
+<section id="trajetoria" aria-labelledby="experience-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">02 / trajetória</p>
+      <h2 id="experience-title">Cada etapa, uma evolução.</h2>
+    </div>
+    <p>Formação, prática e colaboração.<br />Uma história em construção.</p>
+  </div>
+  <ol class="experience__list">
+    @for (item of experiencias; track item.id) {
+      <li class="experience__item">
+        <div class="experience__period">
+          <span class="eyebrow">{{ tipos[item.tipo] }}</span>
+          <p>{{ item.periodo }}</p>
+        </div>
+        <article class="experience__card">
+          <span class="experience__number" aria-hidden="true">0{{ $index + 1 }}</span>
+          <h3>{{ item.titulo }}</h3>
+          <p class="experience__organization">{{ item.organizacao }}</p>
+          <p class="experience__description">{{ item.descricao }}</p>
+        </article>
+      </li>
+    }
+  </ol>
+</section>

@@ -1,0 +1,117 @@
+@use '../../../styles/mixins' as *;
+:host {
+  display: block;
+}
+.hero {
+  display: grid;
+  gap: var(--space-xl);
+  padding-top: 2rem;
+  @include tablet {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: center;
+    padding-top: 3rem;
+  }
+}
+.hero__intro {
+  padding-block: var(--space-lg);
+}
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.065em;
+  margin-block: 1.1rem 0.5rem;
+  overflow-wrap: anywhere;
+}
+.hero__cargo {
+  font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+  color: var(--accent);
+  font-weight: 600;
+}
+.hero__tagline {
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
+}
+.hero__bio {
+  color: var(--muted);
+  max-width: 52ch;
+  margin-top: 0.7rem;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-block: 1.8rem;
+}
+.hero__local {
+  font: 0.8rem var(--font-mono);
+  color: var(--muted);
+}
+.hero__profile {
+  @include panel;
+  position: relative;
+  padding: 2.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--surface-alt);
+  overflow: hidden;
+}
+.hero__profile img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: 50% 60%;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.hero__role {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+.hero__squad {
+  color: var(--muted);
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+.hero__availability {
+  border-top: 1px solid var(--border);
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  width: 100%;
+}
+.hero__availability span {
+  color: var(--accent);
+}
+.hero__profile .placeholder-note {
+  margin-top: 0.5rem;
+}
+.hero__orbit {
+  position: absolute;
+  inset: 2rem 1.5rem auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--accent);
+  font: 1.3rem var(--font-mono);
+}
+.hero__about {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.8rem;
+  border-block: 1px solid var(--border);
+  padding-block: 1.5rem;
+  margin-top: 2.5rem;
+  @include tablet {
+    grid-template-columns: 1fr 2fr auto;
+    align-items: center;
+  }
+}
+.hero__about > p:nth-child(2) {
+  font-size: 1.1rem;
+}
+.hero__about span {
+  font-size: 1.7rem;
+  color: var(--accent);
+}

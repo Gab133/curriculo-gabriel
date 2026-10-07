@@ -1,0 +1,62 @@
+<section id="contato" class="contact" aria-labelledby="contact-title">
+  <div class="contact__intro">
+    <p class="eyebrow">04 / conexão</p>
+    <h2 id="contact-title">Boas ideias começam<br />com uma conversa<span>.</span></h2>
+    <p>Encontre meus canais de contato.</p>
+  </div>
+  <div class="contact__email">
+    <p class="eyebrow">E-mail</p>
+    @if (emailHref) {
+      <a class="contact__address" [href]="emailHref">{{ perfil.email }}</a>
+    } @else {
+      <p class="contact__address">{{ perfil.email }}</p>
+    }
+    <button
+      type="button"
+      class="button"
+      (click)="copiarEmail()"
+      [disabled]="!emailHref || estado() === 'copying'"
+    >
+      @if (estado() === 'copied') {
+        ✓ Copiado!
+      } @else if (estado() === 'copying') {
+        Copiando…
+      } @else {
+        Copiar e-mail <span aria-hidden="true">⧉</span>
+      }
+    </button>
+    <p class="contact__feedback" aria-live="polite">
+      @if (estado() === 'error') {
+        Não foi possível copiar. Selecione o endereço e copie manualmente.
+      } @else if (estado() === 'copied') {
+        E-mail copiado para a área de transferência.
+      } @else if (!emailHref) {
+        Preencha um e-mail válido para ativar o contato.
+      }
+    </p>
+  </div>
+  <div class="contact__links">
+    @for (link of links; track link.nome) {
+      @if (link.url) {
+        <a
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="link.nome + ' (abre em nova aba)'"
+          ><span class="contact__icon" aria-hidden="true">{{ link.simbolo }}</span
+          ><span>{{ link.nome }}</span
+          ><span aria-hidden="true">↗</span></a
+        >
+      } @else {
+        <div class="contact__pending">
+          <span class="contact__icon" aria-hidden="true">{{ link.simbolo }}</span>
+          <div>
+            <strong>{{ link.nome }}</strong>
+            <p>{{ link.valor }}</p>
+          </div>
+          <span class="sr-only">Link a preencher</span>
+        </div>
+      }
+    }
+  </div>
+</section>

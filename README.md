@@ -1,59 +1,61 @@
-# CurriculoGabriel
+# Currículo Digital Interativo — Angular 22
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.1.
+SPA do Desafio 01 da trilha Proenergia Summit 2026. Implementação completa da estrutura, com os dados pessoais fornecidos por Gabriel Braga.
 
-## Development server
+## Executar
 
-To start a local development server, run:
+- `npm ci` somente se precisar instalar as dependências em outro computador.
+- `npm start` inicia o desenvolvimento em http://localhost:4200.
+- `npm run build` gera a versão de produção em `dist/curriculo-gabriel/browser`.
+- `npm test -- --watch=false` executa os testes com Vitest.
 
-```bash
-ng serve
+## Organização
+
+```text
+src/app/
+  components/
+    header/       navegação mobile e tema persistente
+    hero/         apresentação, avatar, objetivo e papel na squad
+    skills/       categorias, busca, estado vazio e autoavaliação
+    experiencia/  formação, trabalho e hackathon
+    projetos/     projetos pessoais/acadêmicos e destinos externos
+    contato/      e-mail, cópia e redes sociais
+  data/curriculo.data.ts   fonte dos dados pessoais
+  models/curriculo.ts      interfaces e unions
+  utils/contato.ts         validação de destinos
+  app.*                   composição e metadados
+src/styles/_mixins.scss    partial SCSS
+src/styles.scss           tokens, reset, estilos base e reduced motion
+public/                   avatar e favicon SVG locais
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Personalizar
 
-## Code scaffolding
+Edite `src/app/data/curriculo.data.ts`. Não precisa alterar os componentes para preencher o currículo. Remova itens de experiência ou projetos que não se aplicam: não invente histórico profissional.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Substitua os placeholders da lista abaixo.
+2. Em `papelSquad`, informe o papel real (Dev/TL, Dev/PO, Dev/SM ou Dev/QA).
+3. Troque `nivel: null` por uma autoavaliação real de 0 a 100 para exibir barras animadas; `null` mostra “Nível a definir”. Os valores são limitados à faixa 0–100 na apresentação. Não há níveis fictícios.
+4. Coloque sua foto em `public/`, altere `avatarUrl` e preserve dimensões quadradas. O texto alternativo passa a usar o nome do perfil automaticamente.
+5. GitHub, LinkedIn e projetos aceitam URLs completas HTTP/HTTPS. WhatsApp aceita número com DDI. Links com placeholders ou destinos inválidos não são ativados. E-mail válido ativa `mailto` e cópia; falhas de permissão exibem uma alternativa manual.
+6. Atualize também os valores correspondentes em `src/index.html` (title, description e Open Graph) para o HTML inicial. Em runtime, App atualiza esses metadados a partir do perfil.
+7. Rode build e testes novamente depois de personalizar, e revise o conteúdo visualmente.
 
-```bash
-ng generate component component-name
-```
+Não há backend ou formulário de envio. O contato usa seus canais reais. Fontes do sistema evitam downloads externos e mantêm a página funcionando offline após o carregamento dos assets.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Decisões e requisitos
 
-```bash
-ng generate --help
-```
+Consulte `docs/DECISOES.md`, `docs/VALIDACAO.md` e `docs/GUIA-DE-APRESENTACAO.md`.
 
-## Building
+Os documentos de referência foram encontrados e lidos em:
 
-To build the project run:
+- `C:/Users/Pichau/Downloads/DESAFIO_01_CURRICULO_ANGULAR22_MENTOR_V2.md`
+- `C:/Users/Pichau/Downloads/ANTIGRAVITY_MENTOR_PROTOCOL.md`
 
-```bash
-ng build
-```
+A autorização expressa do usuário para implementação integral substituiu os checkpoints pedagógicos interativos. Foram preservadas validação, simplicidade e documentação. Nenhum commit foi criado.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Personalização atual — Gabriel Braga
 
-## Running unit tests
+Os 49 placeholders iniciais foram substituídos pelos dados fornecidos em 03/10/2026. Contatos reais estão ativos. As 20 habilidades usam níveis textuais de autoavaliação, sem percentuais inventados. Foto pessoal fornecida pelo usuário em public/gabriel-braga.jpg, com enquadramento circular via CSS.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Pendências de conteúdo: períodos das duas experiências e links de DeadChance e Projeto Marco. As experiências não são apresentadas como emprego formal em TI. Squad e hackathon foram omitidos por solicitação expressa; o papel na squad exigido pelo desafio continua sendo uma diferença a revisar antes da entrega.

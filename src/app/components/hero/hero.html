@@ -1,0 +1,39 @@
+<section class="hero" id="sobre" aria-labelledby="hero-title">
+  <div class="hero__intro">
+    <p class="eyebrow">Olá, este é o meu espaço.</p>
+    <h1 id="hero-title">{{ perfil.nome }}</h1>
+    <p class="hero__cargo">{{ perfil.cargo }}</p>
+    <p class="hero__tagline">{{ perfil.tagline }}</p>
+    <p class="hero__bio">{{ perfil.bio }}</p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="#projetos"
+        >Explorar projetos <span aria-hidden="true">↗</span></a
+      ><a class="button" href="#contato">Vamos conversar <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="hero__local"><span aria-hidden="true">◎</span> {{ perfil.local }}</p>
+  </div>
+  <aside class="hero__profile" aria-label="Perfil profissional">
+    <div class="hero__orbit" aria-hidden="true"><span>&lt;/&gt;</span><span>+</span></div>
+    <img [src]="perfil.avatarUrl" [alt]="avatarAlt" width="180" height="180" />
+    @if (perfil.papelSquad) {
+      <p class="eyebrow">Na squad</p>
+      <p class="hero__role">{{ perfil.papelSquad }}</p>
+      <p class="hero__squad">{{ perfil.squad }}</p>
+    } @else {
+      <p class="eyebrow">Em formação</p>
+      <p class="hero__role">Análise e Desenvolvimento de Sistemas</p>
+      <p class="hero__squad">UniAteneu · 1º semestre</p>
+    }
+    <div class="hero__availability">
+      <span aria-hidden="true">●</span> {{ perfil.disponibilidade }}
+    </div>
+    @if (emPersonalizacao) {
+      <p class="placeholder-note">Perfil em personalização</p>
+    }
+  </aside>
+</section>
+<div class="hero__about">
+  <p class="eyebrow">O próximo capítulo</p>
+  <p>{{ perfil.objetivo }}</p>
+  <span aria-hidden="true">↘</span>
+</div>
